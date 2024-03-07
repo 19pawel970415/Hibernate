@@ -17,6 +17,6 @@ public class Client {
     @OneToOne
     private Person person;
 
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
     List<Order> orders;
 }

@@ -19,14 +19,16 @@ public class Main {
 
         Person person = new Person("Anna", "Pickle", 14);
         Person person1 = new Person("John", "Pickle", 12);
-        Person person2 = new Person("JAmes", "Pickle", 10);
+        Person person2 = new Person("James", "Pickle", 10);
         Person person3 = new Person("Adam", "Pickle", 34);
         Person person4 = new Person("Anna", "Smith", 34);
+        Person person5 = new Person("Sophia", "Angelo", 28);
         session.save(person);
         session.save(person1);
         session.save(person2);
         session.save(person3);
         session.save(person4);
+        session.save(person5);
 
         ArrayList<Parent> parents = new ArrayList<>();
         ArrayList<Child> children = new ArrayList<>();
@@ -72,6 +74,20 @@ public class Main {
         session.save(order);
         session.save(order1);
         session.save(client);
+
+        Parent parent1FromDB = session.get(Parent.class, 1);
+        Parent parent2FromDB = session.get(Parent.class, 2);
+
+        for (Child c : parent1FromDB.getChildren()) {
+            System.out.println(c.getPerson().getFirstName() + " " + c.getPerson().getLastName());
+            for (Parent p : c.getParents()) {
+                System.out.println(p.getPerson().getFirstName() + " " + p.getPerson().getLastName());
+            }
+        }
+
+        parent2FromDB.setPerson(person5);
+
+        session.remove(person4);
 
         transaction.commit();
 
