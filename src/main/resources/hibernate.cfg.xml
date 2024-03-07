@@ -15,6 +15,10 @@
         <property name="format_sql">true</property>
 
         <mapping class="entity.Person"></mapping>
+        <mapping class="entity.Parent"></mapping>
+        <mapping class="entity.Child"></mapping>
+        <mapping class="entity.Order"></mapping>
+        <mapping class="entity.Client"></mapping>
 
     </session-factory>
 </hibernate-configuration>
