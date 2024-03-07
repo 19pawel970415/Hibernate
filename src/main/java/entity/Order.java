@@ -10,9 +10,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity (name = "orders")
 public class Order  {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+
+    @EmbeddedId
+    private OrderId orderId;
 
     private String orderNumber;
 
