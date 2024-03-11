@@ -3,9 +3,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
+import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -88,6 +93,62 @@ public class Main {
         parent2FromDB.setPerson(person5);
 
         session.remove(person4);
+
+        List<Person> adultsFromDB = session.createQuery("from Person", Person.class).getResultStream()
+                .filter(p -> p.getAge() >= 18)
+                .collect(Collectors.toList());
+
+        for (Person adult : adultsFromDB) {
+            System.out.println(adult);
+        }
+
+        System.out.println();
+        System.out.println();
+
+        List<String> resultList = session.createQuery("select p.firstName from Person p where p.age < 18 order by p.firstName", String.class).getResultList();
+
+        for (String name : resultList) {
+            System.out.println(name);
+        }
+
+
+        List<Object[]> lastNamesAverages = session.createQuery("select p.lastName, avg(age) from Person p group by p.lastName").getResultList();
+
+        for (Object[] result : lastNamesAverages) {
+            String lastName = (String) result[0];
+            Double averageAge = (Double) result[1];
+            System.out.println("Last Name: " + lastName + ", Average Age: " + averageAge);
+        }
+
+        List<Object[]> resultList1 = session.createQuery("select p.firstName, p.lastName from child c left join Person p on c.person.id = p.id where p.age >= 12").getResultList();
+
+        for (Object[] result : resultList1) {
+            String firstName = (String) result[0];
+            String lastName = (String) result[1];
+            System.out.println(firstName + " " + lastName);
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter the surname: ");
+        String surname = scanner.nextLine();
+        try {
+            Person p = session.createQuery("from Person p where p.firstName = :firstName and p.lastName = :lastName", Person.class)
+                    .setParameter("firstName", name)
+                    .setParameter("lastName", surname)
+                    .getSingleResult();
+            System.out.println(p);
+        } catch (NoResultException nre) {
+            System.err.println(nre.getMessage());
+        }
+
+        List<Person> peopleWithAgeGreaterThanAvg = session.createQuery("from Person p where p.age > (select avg(age) from Person)", Person.class).getResultList();
+
+        for (Person pr : peopleWithAgeGreaterThanAvg) {
+            System.out.println(pr);
+        }
+
 
         transaction.commit();
 
