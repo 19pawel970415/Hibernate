@@ -19,6 +19,11 @@
         <mapping class="entity.Child"></mapping>
         <mapping class="entity.Order"></mapping>
         <mapping class="entity.Client"></mapping>
+        <mapping class="entity.PersonInh"></mapping>
+        <mapping class="entity.ParentInh"></mapping>
+        <mapping class="entity.ChildInh"></mapping>
+        <mapping class="entity.OrderInh"></mapping>
+        <mapping class="entity.ClientInh"></mapping>
 
     </session-factory>
 </hibernate-configuration>
