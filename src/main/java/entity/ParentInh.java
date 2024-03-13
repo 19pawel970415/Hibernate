@@ -8,9 +8,8 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "id")
+@Table(name = "parents")
 @Entity
-@DiscriminatorValue("parent")
 public class ParentInh extends PersonInh {
 
     private String workplaceName;

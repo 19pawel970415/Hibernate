@@ -8,11 +8,10 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "nationality")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class PersonInh {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Column(name = "first_name", length = 45, nullable = false)

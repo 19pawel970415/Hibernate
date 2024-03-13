@@ -8,9 +8,8 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@Table(name = "clients")
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
-@DiscriminatorValue("client")
 public class ClientInh extends PersonInh {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
