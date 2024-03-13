@@ -24,6 +24,11 @@
         <mapping class="entity.ChildInh"></mapping>
         <mapping class="entity.OrderInh"></mapping>
         <mapping class="entity.ClientInh"></mapping>
+        <mapping class="medicalCentre.Address"></mapping>
+        <mapping class="medicalCentre.Appointment"></mapping>
+        <mapping class="medicalCentre.Doctor"></mapping>
+        <mapping class="medicalCentre.Patient"></mapping>
+        <mapping class="medicalCentre.Speciality"></mapping>
 
     </session-factory>
 </hibernate-configuration>
