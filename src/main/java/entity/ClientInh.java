@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
+@DiscriminatorValue("client")
 public class ClientInh extends PersonInh {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

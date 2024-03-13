@@ -14,16 +14,16 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="entity.Person"></mapping>
-        <mapping class="entity.Parent"></mapping>
-        <mapping class="entity.Child"></mapping>
-        <mapping class="entity.Order"></mapping>
-        <mapping class="entity.Client"></mapping>
-<!--        <mapping class="entity.PersonInh"></mapping>-->
-<!--        <mapping class="entity.ParentInh"></mapping>-->
-<!--        <mapping class="entity.ChildInh"></mapping>-->
-<!--        <mapping class="entity.OrderInh"></mapping>-->
-<!--        <mapping class="entity.ClientInh"></mapping>-->
+<!--        <mapping class="entity.Person"></mapping>-->
+<!--        <mapping class="entity.Parent"></mapping>-->
+<!--        <mapping class="entity.Child"></mapping>-->
+<!--        <mapping class="entity.Order"></mapping>-->
+<!--        <mapping class="entity.Client"></mapping>-->
+        <mapping class="entity.PersonInh"></mapping>
+        <mapping class="entity.ParentInh"></mapping>
+        <mapping class="entity.ChildInh"></mapping>
+        <mapping class="entity.OrderInh"></mapping>
+        <mapping class="entity.ClientInh"></mapping>
 <!--        <mapping class="medicalCentre.Address"></mapping>-->
 <!--        <mapping class="medicalCentre.Appointment"></mapping>-->
 <!--        <mapping class="medicalCentre.Doctor"></mapping>-->

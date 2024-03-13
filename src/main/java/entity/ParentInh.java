@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "id")
 @Entity
+@DiscriminatorValue("parent")
 public class ParentInh extends PersonInh {
 
     private String workplaceName;

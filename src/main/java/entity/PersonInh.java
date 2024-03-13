@@ -7,8 +7,9 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "nationality")
 public abstract class PersonInh {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
